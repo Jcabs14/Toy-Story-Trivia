@@ -1,0 +1,11 @@
+body{
+    height:100%;
+    width: 100%;
+    background-image: url("../images/background.jpg");
+}
+
+.answer{
+    color:#e2e55f;
+    font-size:50px;
+    
+}
