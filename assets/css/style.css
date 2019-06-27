@@ -7,5 +7,23 @@ body{
 .answer{
     color: #F1060B;
     font-size:50px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 4px;
+    opacity: .7;
     
 }
+
+
+p.text-center {
+    font-size:24px;
+  }
+  .answer:hover {
+    background: rgba(250, 240, 99, 0.99);
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 400;
+  }
+ 

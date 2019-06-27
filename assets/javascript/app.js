@@ -6,7 +6,6 @@ $(document).ready(function () {
     var questionCounter = 0;
     var unansweredCounter = 0;
     var clockCounter = 30;
-    var userAnswer;
 
     //create an array of questions
     var questionArray = ["What year did Toy Story come out?", "Who is the actor who plays the voice of Woody?",
@@ -17,17 +16,17 @@ $(document).ready(function () {
     //create an array of answers
     var answerArray = [["1989", "1995", "2000", "2003"], ["Nicolas Cage", "Tim Allen", "Tom Hanks", "Forest Whittiker"],
     ["Cid", "Alien", "Emporer Zurg", "Woody"], ["Toy Story", "Toy Story 2", "Toy Story 3", "Toy Story 4"],
-    ["Woody's camp", "Woody's house of fun", "Woody's cool show", "Woody's round up"], ["Pizza Planet", "Pizza World", "Pizza Universe", "Buzz LightYears Pizza"], 
+    ["Woody's camp", "Woody's house of fun", "Woody's cool show", "Woody's Round Up"], ["Pizza Planet", "Pizza World", "Pizza Universe", "Buzz LightYears Pizza"], 
     ["James", "Brian", "Andy", "Mac"]];
 
     //create an array of images
     var imageArray = ["assets/images/correct1.gif","assets/images/correct2.gif","assets/images/correct3.gif","assets/images/correct4.gif",
-    "assets/images/correct5.gif","assets/images/correct6.gif","assets/images/correct7.gif",];
+    "assets/images/correct5.gif","assets/images/correct6.gif","assets/images/correct7.gif"];
 
     //create an array of correct answers"
-    var correctAnswerArray = ["B. 1995", "B. Tim Allen"]
+    var correctAnswerArray = ["B. 1995", "B. Tim Allen", "C. Emporer Zurg","D. Toy Story 4","D. Woody's Round Up","A. Pizza Planet","C. Andy"]
 
-    //create questions
+    //function to create questions
     function createQuestions() {
         $("#questionArea").html("<p class='text-center timer-p'>Time Remaining: <span class='timer'>30</span></p><p class='text-center'>" + questionArray[questionCounter] + "</p><p class='first-answer answer'>A. " + answerArray[questionCounter][0] + "</p><p class='answer'>B. " + answerArray[questionCounter][1] + "</p><p class='answer'>C. " + answerArray[questionCounter][2] + "</p><p class='answer'>D. " + answerArray[questionCounter][3] + "</p>");
     }
@@ -37,7 +36,7 @@ $(document).ready(function () {
     //function when clock hits 0
     function timeOut() {
         unansweredCounter++;
-        $("#questionArea").html()
+        $("#questionArea").html("<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/wrongAnswer.gif>'");
         setTimeout(wait,4000);
 
     }
@@ -45,14 +44,14 @@ $(document).ready(function () {
     //function to count correct answers
     function correctAnswers() {
         correctCounter++;
-        $("#questionArea").html();
+        $("#questionArea").html("<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>Correct! The answer is: " + correctAnswerArray[questionCounter] + "</p>" + imageArray[questionCounter]);
         setTimeout(wait, 4000);
 
     }
     //function to count wrong answers
     function wrongAnswers() {
-        wrongCounter++;
-        $("#questionArea").html()
+        incorrectCounter++;
+        $("#questionArea").html("<p class='text-center timer-p'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>Wrong Answer!  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/wrongAnswer.gif>'");
         setTimeout(wait, 4000);
     }
 
@@ -72,7 +71,6 @@ $(document).ready(function () {
     }
     //function to go through questions
     function wait() {
-        //ternary operator replacing if/else for generate more questions
         if (questionCounter < 7) {
             questionCounter++ ,
                 createQuestions(),
@@ -96,19 +94,18 @@ $(document).ready(function () {
 
         //on click function to move to the next question
 
-        $(".answer").on("click", function (event) {
+        $(document).on("click",".answer", function (event) {
+            var userAnswer = $(this).text();
+
             if (userAnswer === correctAnswerArray[questionCounter]) {
-
-
+                clearInterval(clockInterval);
+                correctAnswers();
             }
             else {
-                timeOut();
+                clearInterval(clockInterval);
                 wrongAnswers();
-
             }
         });
-
     };
-
     startPage();
 });
