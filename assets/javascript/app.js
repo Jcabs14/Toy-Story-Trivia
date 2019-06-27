@@ -23,14 +23,14 @@ $(document).ready(function () {
     ["James", "Brian", "Andy", "Mac"]];
 
     //create an array of images
-    var imageArray = ["<img class='center-block' src='assets/images/correct1.gif'>", "<img class='center-block' src='assets/images/correct2.gif'>", "<img class='center-block' src='assets/images/correct3.gif'>", "<img class='center-block' src='assets/images/correct4.gif'>",
-        "<img class='center-block' src='assets/images/correct5.gif'>", "<img class='center-block' src='assets/images/correct6.gif'>", "<img class='center-block' src='assets/images/correct7.gif'>"];
+    var imageArray = ["<img class='rounded mx-auto d-block' src='assets/images/correct1.gif'>", "<img class='rounded mx-auto d-block' src='assets/images/correct2.gif'>", "<img class='rounded mx-auto d-block' src='assets/images/correct3.gif'>", "<img class='rounded mx-auto d-block' src='assets/images/correct4.gif'>",
+        "<img class='rounded mx-auto d-block' src='assets/images/correct5.gif'>", "<img class='rounded mx-auto d-block' src='assets/images/correct6.gif'>", "<img class='rounded mx-auto d-block' src='assets/images/correct7.gif'>"];
 
     //create an array of correct answers"
     var correctAnswerArray = ["B. 1995", "B. Tim Allen", "C. Emporer Zurg", "D. Toy Story 4", "D. Woody's Round Up", "A. Pizza Planet", "C. Andy"]
 
     //to make sound on hover
-    $(document).on("mouseenter",".answer",function (event) {
+    $(document).on("mouseenter", ".answer", function (event) {
         hoverSound.play();
     });
 
@@ -41,11 +41,11 @@ $(document).ready(function () {
 
     //function to show results
     function results() {
-        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + correctCounter + "</p>" + "<p>Wrong Answers: " + incorrectCounter + "</p>" + "<p>Unanswered: " + unansweredCounter + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-warning btn-md btn-block reset-button' href='#' role='button'>Try Again Partna!</a></p>");
+        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + correctCounter + "</p>" + "<p>Wrong Answers: " + incorrectCounter + "</p>" + "<p>Unanswered: " + unansweredCounter + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-warning btn-md btn-block resetBtn' href='#' role='button'>Try Again Partna!</a></p>");
     }
     //function to go through questions
     function wait() {
-        if (questionCounter < 7) {
+        if (questionCounter < 6) {
             questionCounter++ ,
                 createQuestions(),
                 clockCounter = 30,
@@ -59,7 +59,7 @@ $(document).ready(function () {
     //function when clock hits 0
     function timeOut() {
         unansweredCounter++;
-        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/wrongAnswer.gif>'");
+        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='rounded mx-auto d-block' src='assets/images/wrongAnswer.gif'>");
         setTimeout(wait, 4000);
 
     }
@@ -74,7 +74,7 @@ $(document).ready(function () {
     //function to count wrong answers
     function wrongAnswers() {
         incorrectCounter++;
-        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>Thats the Wrong Answer!  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='center-block img-wrong' src='assets/images/wrongAnswer.gif>'");
+        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>Thats the Wrong Answer!  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='rounded mx-auto d-block' src='assets/images/wrongAnswer.gif'>");
         setTimeout(wait, 4000);
     }
 
@@ -91,6 +91,17 @@ $(document).ready(function () {
             }
             $(".timer").html(clockCounter);
         }
+    }
+
+    //function to reset the game
+    function reset() {
+        correctCounter = 0;
+        incorrectCounter = 0;
+        questionCounter = 0;
+        unansweredCounter = 0;
+        clockCounter = 30;
+        createQuestions();
+        questionTimer();
     }
 
     //start page to start the trivia
@@ -121,6 +132,10 @@ $(document).ready(function () {
             }
         });
     };
+
+    $(document).on("click", ".resetBtn", function (event) {
+        reset();
+    });
 
     startPage();
 });
