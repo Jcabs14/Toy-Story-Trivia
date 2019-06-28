@@ -42,7 +42,7 @@ $(document).ready(function () {
 
     //function to show results
     function results() {
-        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + correctCounter + "</p>" + "<p>Wrong Answers: " + incorrectCounter + "</p>" + "<p>Unanswered: " + unansweredCounter + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-block resetBtn' href='#' role='button'>Try Again Partna!</a></p>");
+        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='results'>Correct Answers: " + correctCounter + "</p>" + "<p class='results'>Wrong Answers: " + incorrectCounter + "</p>" + "<p class='results'>Unanswered: " + unansweredCounter + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-danger btn-block resetBtn' href='#' role='button'>Try Again Partna!</a></p>");
     }
     //function to go through questions
     function wait() {
@@ -60,7 +60,7 @@ $(document).ready(function () {
     //function when clock hits 0
     function timeOut() {
         unansweredCounter++;
-        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>You ran out of time!  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='rounded mx-auto d-block' src='assets/images/wrongAnswer.gif'>");
+        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>You ran out of time! <br>  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='rounded mx-auto d-block' src='assets/images/wrongAnswer.gif'>");
         setTimeout(wait, 4000);
 
     }
@@ -68,14 +68,14 @@ $(document).ready(function () {
     //function to count correct answers
     function correctAnswers() {
         correctCounter++;
-        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center correctAnswer'>Good job Space Ranger you are correct! The answer is: " + correctAnswerArray[questionCounter] + "</p>" + imageArray[questionCounter]);
+        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center correctAnswer'>Good job Space Ranger you are correct! <br> The answer is: " + correctAnswerArray[questionCounter] + "</p>" + imageArray[questionCounter]);
         setTimeout(wait, 4000);
 
     }
     //function to count wrong answers
     function wrongAnswers() {
         incorrectCounter++;
-        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center wrongAnswer'>Thats the Wrong Answer cadet!  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='rounded mx-auto d-block' src='assets/images/wrongAnswer.gif'>");
+        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center wrongAnswer'>Thats the Wrong Answer cadet! <br>  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='rounded mx-auto d-block' src='assets/images/wrongAnswer.gif'>");
         setTimeout(wait, 4000);
     }
 
