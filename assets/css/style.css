@@ -4,27 +4,57 @@ body{
     background-image: url("../images/background.jpg");
 }
 
+.start-button{
+    font-size:50px;
+}
+
+.timer{
+    font-size: 45px;
+    font-weight:bold;
+}
 .answer{
     color: #F1060B;
+    text-shadow: #00356B;
     font-size:50px;
+    font-weight: bold;
     padding: 15px;
     background-color: white;
     border-radius: 4px;
-    opacity: .7;
+    opacity: .5;
     text-align: center;
     
 }
 
+.text-center{
+    font-size: 35px;
+}
 
-p.text-center {
-    font-size:24px;
-  }
+.question{
+    font-weight: bold;
+}
+
+.correctAnswer .wrongAnswer{
+    font-size: 30px;
+    font-weight:bold;
+}
+
+/*hover effect for answers */
   .answer:hover {
     background: rgba(250, 240, 99, 0.99);
   }
 
+  /*Styling for P tags */
   p {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
+  }
+  
+  /*Styling for jumbotron */
+  .jumbotron{
+      background-color: #F1060B
+  }
+
+  .jumbotron p{
+      color:white;
   }
  

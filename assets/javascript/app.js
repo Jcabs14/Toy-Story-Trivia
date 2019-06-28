@@ -7,6 +7,7 @@ $(document).ready(function () {
     var unansweredCounter = 0;
     var clockCounter = 30;
 
+    //variable for sound
     var hoverSound = new Audio("assets/sound/413310__tieswijnen__select.mp3");
 
 
@@ -36,12 +37,12 @@ $(document).ready(function () {
 
     //function to create questions
     function createQuestions() {
-        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>30</span></p><p class='text-center'>" + questionArray[questionCounter] + "</p><p class='first-answer answer'>A. " + answerArray[questionCounter][0] + "</p><p class='answer'>B. " + answerArray[questionCounter][1] + "</p><p class='answer'>C. " + answerArray[questionCounter][2] + "</p><p class='answer'>D. " + answerArray[questionCounter][3] + "</p>");
+        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>30</span></p><p class='text-center question'>" + questionArray[questionCounter] + "</p><p class='first-answer answer'>A. " + answerArray[questionCounter][0] + "</p><p class='answer'>B. " + answerArray[questionCounter][1] + "</p><p class='answer'>C. " + answerArray[questionCounter][2] + "</p><p class='answer'>D. " + answerArray[questionCounter][3] + "</p>");
     }
 
     //function to show results
     function results() {
-        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + correctCounter + "</p>" + "<p>Wrong Answers: " + incorrectCounter + "</p>" + "<p>Unanswered: " + unansweredCounter + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-warning btn-md btn-block resetBtn' href='#' role='button'>Try Again Partna!</a></p>");
+        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>All done, here's how you did!" + "</p>" + "<p class='summary-correct'>Correct Answers: " + correctCounter + "</p>" + "<p>Wrong Answers: " + incorrectCounter + "</p>" + "<p>Unanswered: " + unansweredCounter + "</p>" + "<p class='text-center reset-button-container'><a class='btn btn-block resetBtn' href='#' role='button'>Try Again Partna!</a></p>");
     }
     //function to go through questions
     function wait() {
@@ -67,14 +68,14 @@ $(document).ready(function () {
     //function to count correct answers
     function correctAnswers() {
         correctCounter++;
-        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>Correct! The answer is: " + correctAnswerArray[questionCounter] + "</p>" + imageArray[questionCounter]);
+        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center correctAnswer'>Good job Space Ranger you are correct! The answer is: " + correctAnswerArray[questionCounter] + "</p>" + imageArray[questionCounter]);
         setTimeout(wait, 4000);
 
     }
     //function to count wrong answers
     function wrongAnswers() {
         incorrectCounter++;
-        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center'>Thats the Wrong Answer!  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='rounded mx-auto d-block' src='assets/images/wrongAnswer.gif'>");
+        $("#questionArea").html("<p class='text-center'>Time Remaining: <span class='timer'>" + clockCounter + "</span></p>" + "<p class='text-center wrongAnswer'>Thats the Wrong Answer cadet!  The correct answer was: " + correctAnswerArray[questionCounter] + "</p>" + "<img class='rounded mx-auto d-block' src='assets/images/wrongAnswer.gif'>");
         setTimeout(wait, 4000);
     }
 
@@ -107,7 +108,7 @@ $(document).ready(function () {
     //start page to start the trivia
     //create starting page
     function startPage() {
-        $('.container').append("<p class='text-center main-button-container'><a class='btn btn-warning btn-md btn-block start-button' href='#' role='button'>Start Quiz</a></p>");
+        $('.container').append("<p class='text-center main-button-container'><a class='btn btn-danger btn-md btn-block start-button' href='#' role='button'>Lets get the trivia going space cadet!</a></p>");
 
         $(".main-button-container").on("click", ".start-button", function (event) {
             $(".jumbotron").hide();
@@ -133,6 +134,7 @@ $(document).ready(function () {
         });
     };
 
+    //on click to reset game 
     $(document).on("click", ".resetBtn", function (event) {
         reset();
     });
