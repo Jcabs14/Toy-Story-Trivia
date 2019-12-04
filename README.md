@@ -62,6 +62,6 @@ Jared Cabanilla
 
 jcabanilla@gmail.com
 
-Project Link: [https://github.com/Jcabs14/clicky-game](https://github.com/Jcabs14/clicky-game)
+Project Link: [https://github.com/Jcabs14/Toy-Story-Trivia.git](https://github.com/Jcabs14/Toy-Story-Trivia.git)
 
 
