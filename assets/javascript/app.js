@@ -12,7 +12,7 @@ $(document).ready(function () {
 
 
     //create an array of questions
-    var questionArray = ["What year did Toy Story come out?", "Who is the actor who plays the voice of Woody?",
+    var questionArray = ["What year did Toy Story come out?", "Who is the actor who plays the voice of Buzz-Lightyear?",
         "What is the name of Buzz-Lightyears arch nemesis?", "Which Toy Story did Bo-Peep and the gang reunite in?",
         "What is the name of Woody's TV show first shown in Toy Story 2", "What is the name of the popular pizza chain resturant in the Toy Story universe?",
         "What is the name of the owner of all the toys?"];
