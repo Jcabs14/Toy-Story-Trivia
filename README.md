@@ -23,7 +23,7 @@ https://jcabs14.github.io/TriviaGame/
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Toy Story Trivia](assets/images/front.png)
+![Toy Story Trivia](assets/images/front2.png)
 
 
 [Link to deployed project](https://jcabs14.github.io/Toy-Story-Trivia/)
